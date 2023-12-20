@@ -1,0 +1,15 @@
+srdj=c('低收入户','中等偏下户','中等收入户','中等偏上户','高收入户')
+ln=c(3750,7338,10508,14823,28225)
+bn=c(4647,9330,13506,19404,36957)
+jn=c(6545,12674,18277,24044,49175)
+eln=c(8004,17024,24832,35576,67132)
+eyn=c(10422,21636,31685,45639,85541)
+tb=data.frame(收入户等级=srdj,"2016年"=ln,"2018年"=bn,"2019年"=jn,"2020年"=eln,"2021年"=eyn)
+write.csv(tb,file = "D:\\R wenjian\\mydata.csv")
+vector1=as.vector(tb$收入户等级)
+mat=as.matrix(tb[,2:6])
+rownames(mat)=tb[,1]
+#install.packages("reshape2")
+#library("reshape2")
+df=melt(tb,vars="收入户等级",variable.name="年份",value.name="收入")
+df
